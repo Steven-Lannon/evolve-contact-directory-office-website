@@ -38,7 +38,10 @@ body {
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 .wrap { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
-h1 { margin: 0 0 16px; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+.brand { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+.logo { display: block; height: 32px; width: auto; }
+.brand h1 { margin: 0; text-transform: uppercase; letter-spacing: 0; }
+h1 { margin: 0 0 4px; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
 .intro { margin: 0 0 14px; color: var(--muted); font-size: 14px; }
 
 /* Search (same as FAQ) */
@@ -85,10 +88,11 @@ h1 { margin: 0 0 16px; font-size: 22px; font-weight: 700; letter-spacing: -0.01e
 .num-or { font-size: 12px; color: var(--muted); line-height: 1.2; }
 .num-row { display: flex; align-items: center; gap: 6px; }
 .mini-copy {
-  width: 24px; height: 24px; padding: 0; display: grid; place-items: center;
+  display: inline-flex; align-items: center; gap: 4px; padding: 2px 7px;
+  font: inherit; font-size: 12px; font-weight: 600;
   background: none; border: 0; border-radius: 6px; color: var(--muted); cursor: pointer;
 }
-.mini-copy svg { width: 14px; height: 14px; }
+.mini-copy svg { width: 13px; height: 13px; }
 .mini-copy:hover { background: var(--accent-soft); color: var(--accent); }
 .mini-copy.done { color: var(--accent); }
 .main-note { font-size: 12px; color: var(--muted); }
@@ -107,6 +111,8 @@ h1 { margin: 0 0 16px; font-size: 22px; font-weight: 700; letter-spacing: -0.01e
 .umbrella-head { margin: 18px 0 16px; padding-bottom: 10px; border-bottom: 4px solid var(--accent); }
 .umbrella-head .umbrella-title { margin: 0; padding: 0; border: 0; }
 .umbrella-sub { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
+.umbrella-sub a { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.umbrella-sub a:hover { color: var(--accent-hover); }
 
 /* Locations */
 .loc-name { font-size: 16px; font-weight: 700; margin: 0 0 2px; }
@@ -143,13 +149,7 @@ mark { background: var(--mark); color: var(--mark-ink); padding: 0 2px; border-r
 </head>
 <body>
 <div class="wrap">
-  <h1>Evolve Contact Directory</h1>
-
-  <div class="search" role="search">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    <input id="q" type="search" placeholder="Search a department, office, zip, or number" aria-label="Search the directory" autocomplete="off">
-    <button class="clear" id="clear" aria-label="Clear search">×</button>
-  </div>
+  <div class="brand"><img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJAAAABICAYAAAAZK3z6AAADsklEQVR42u2dv44bVRjFz7l3Zm2XLhIKuigNIihvgIIwAgla7+YNqPIMHl4BiWZfAGE3gBSRYgG5Rtus5I6EFrHFNpHW9tx7P4rsipVC43Fi1h/nJ7mc4o5/9998d87w4RffGcRrmBG9OmH04DkGdUIx6qb8C0G3QEggIYGEBBISSAgJJCSQkEBCAgkhgYQEEreXqvulZmYoXm+MGWFmN35+JSAZAHCnApEVY92LbgUqRHWQ0O8PMDjwXUxdr9copdtYUHXqm6xYLJ2XNs1pCADd9c9iRMWE1WqJkBMKXApEAAXAhyGEuzlnI8m3KpAZSqjqiDafnT09Gnuf43/73v86ZjKZPKvr+tOccwEQ36pAN1SqxuNpfPHiIty7Nyx+b+/MbcuGw2G4uLgo23jQXSDSZrPDDEzs9PTLArGPI48dHx+Xpmk6L0G0jRdbIYGEBBISSEggIYGEkEBCAom9gZu+mWpmOdaDmNvVfPhyMTo/R7hzx29V/tEj9wNIAfCs3+9/vFwuM8ldlDII0Nr5/KvkvYfN5/5HkaZp2q7XbiwQiWClBWDvPfz826/NGAC4q8YbAnr1Gp988AcGBy1K8TfbmxlJZgDvp5Q6LWk6jECklRaB1buh7j/x2ivNiLruXZ0HqlDMpUAgidVqhZwzNj3KsdUUZpYstS+zZ4FaZFxeXoK5dSnQDZFiF3m2EOjVSMStrr/1+wvw1ZQNwHe0S0d3tI0Xb2YbJ4QEEhJISCAhgYSQQEICCQkk/LPNk2SDwyLqa42066bSYduMJK8bt+NSBgMDI90aZEQIRF1XqCp4DldgKWWH4QqGwlgHlHZRmJ8g+ww+SQBSTli3CcFcH3s6IPlNVVX3U0pl02XN5uEKMAshIuf2z7MfH//qfQo7/cH/OqZpmt9jjPfbtrVNC6vbVOMVrrDnDIfDcDEaFVss6t0vomk2mx0pXGGPmUwmdnx4qHAF8d8hgYQEEhJISCAhgYSQQEICib2h+4NEM/7zJHrq+sWp8XgGwF8k9snJSZhOp1wsFp3/vy3SOZY/nz09GqkP7j9N0/zU6/U+65LOsbFA1586MMt/AfjFzAIdngsqFtA/aDF68ByDOiM7LNZcvc5czOyjGOM7O/nUAUCaZZDxbqh6j90uDo2IdUKvP0C//n98bGWH4Qq4ClfIGWYE/Z0rMyMiEpaXSwSn4Qo3TiRG7PxE4nW4Av32TO/hCnwD/5228UICCQkkJJCQQEJIICGBhAQSEkgICSQkkLjF/A0f8YZmPgy+EAAAAABJRU5ErkJggg==" alt="Evolve Psychiatry logo"><h1>Evolve Contact Directory</h1></div>
 
   <div id="list"></div>
 
@@ -171,6 +171,7 @@ mark { background: var(--mark); color: var(--mark-ink); padding: 0 2px; border-r
 const SHEET_ID = "1RoaY3qjpDTGsLUC68vNGsiObzPWWtQtyP342h8VKPlw";
 const TABS = { main: "Main Phone Numbers", locs: "Locations Addresses", depts: "Department Extensions" };
 const STATE_NAMES = { NY: "New York", NC: "North Carolina" };
+const STAFF_DIR_URL = "https://sites.google.com/evolvepsychiatry.com/office/staff-use/staff-directory";
 const HOURS_URL = "https://docs.google.com/spreadsheets/d/1LEglerrTg1FOhjO4C73po5sQe3Vg4HbqAv9iHiIdaEk/edit?usp=sharing";
 
 const FALLBACK = {
@@ -214,7 +215,7 @@ function digits(s) { return String(s).replace(/\D/g, ""); }
 function fmtPhone(s) {
   let d = digits(s);
   if (d.length === 11 && d[0] === "1") d = d.slice(1);
-  return d.length === 10 ? `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}` : String(s).trim();
+  return d.length === 10 ? `${d.slice(0, 3)}-${d.slice(3, 6)}-${d.slice(6)}` : String(s).trim();
 }
 function tel(s) { return "tel:+1" + digits(s).slice(-10); }
 function matches(fields, words) {
@@ -275,6 +276,25 @@ function setData(raw) {
   });
 }
 
+/* Copy that works inside Google Sites embeds: the textarea method runs first
+   because sandboxed frames usually block navigator.clipboard and prompt(). */
+function legacyCopy(text) {
+  const ta = document.createElement("textarea");
+  ta.value = text; ta.setAttribute("readonly", "");
+  ta.style.cssText = "position:absolute;left:-9999px;top:0;opacity:0";
+  document.body.appendChild(ta);
+  ta.select(); ta.setSelectionRange(0, text.length);
+  let ok = false;
+  try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+  ta.remove();
+  return ok;
+}
+function copyToClipboard(text) {
+  if (legacyCopy(text)) return Promise.resolve();
+  if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+  return Promise.reject(new Error("Clipboard blocked"));
+}
+
 function copyText(text, btn, doneLabel) {
   const label = btn.querySelector("span") || btn;
   const original = label.innerHTML;
@@ -282,8 +302,7 @@ function copyText(text, btn, doneLabel) {
     label.textContent = doneLabel; btn.classList.add("done");
     setTimeout(() => { label.innerHTML = original; btn.classList.remove("done"); }, 1600);
   };
-  if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, () => prompt("Copy this:", text));
-  else prompt("Copy this:", text);
+  copyToClipboard(text).then(done, () => { label.textContent = "Press Ctrl+C"; setTimeout(() => { label.innerHTML = original; }, 2000); });
 }
 
 const svg = p => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
@@ -300,7 +319,7 @@ const ICONS = {
 function section(title, body, sub) {
   const el = document.createElement("section");
   el.className = "umbrella";
-  el.innerHTML = `<div class="umbrella-head"><h2 class="umbrella-title">${esc(title)}</h2>${sub ? `<p class="umbrella-sub">${esc(sub)}</p>` : ""}</div>`;
+  el.innerHTML = `<div class="umbrella-head"><h2 class="umbrella-title">${esc(title)}</h2>${sub ? `<p class="umbrella-sub">${sub}</p>` : ""}</div>`;
   el.append(body);
   return el;
 }
@@ -327,15 +346,14 @@ function renderList() {
       c.className = "card main-card" + (first.alert ? " alert" : "");
       c.innerHTML = `<span class="icon">${first.alert ? ICONS.sick : /fax/i.test(g.label) ? ICONS.fax : ICONS.phone}</span>
         <div><div class="main-label">${hl(label, words)}${first.alert ? '<span class="staff-only">Staff only</span>' : ""}</div>
-        ${g.items.map(m => `<div class="num-row"><span class="main-num">${hl(m.number, words)}</span>${m.alert ? "" : `<button class="mini-copy" type="button" data-num="${esc(m.number)}" aria-label="Copy ${esc(m.number)}" title="Copy">${ICONS.copy}</button>`}</div>`).join('<div class="num-or">or</div>')}</div>`;
+        ${g.items.map(m => `<div class="num-row"><span class="main-num">${hl(m.number, words)}</span>${m.alert ? "" : `<button class="mini-copy" type="button" data-num="${esc(m.number)}" aria-label="Copy ${esc(m.number)}" title="Copy">${ICONS.copy}Copy</button>`}</div>`).join('<div class="num-or">or</div>')}</div>`;
       c.querySelectorAll(".mini-copy").forEach(b => b.addEventListener("click", () => {
-        const done = () => { b.innerHTML = ICONS.check; b.classList.add("done"); setTimeout(() => { b.innerHTML = ICONS.copy; b.classList.remove("done"); }, 1400); };
-        if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.num).then(done, () => prompt("Copy this:", b.dataset.num));
-        else prompt("Copy this:", b.dataset.num);
+        const done = () => { b.innerHTML = ICONS.check + "Copied"; b.classList.add("done"); setTimeout(() => { b.innerHTML = ICONS.copy + "Copy"; b.classList.remove("done"); }, 1400); };
+        copyToClipboard(b.dataset.num).then(done, () => {});
       }));
       grid.append(c);
     });
-    list.append(section("Main Numbers", grid, "Give these to patients, pharmacies, insurance companies, and other outside callers to reach us.")); total += mains.length;
+    list.append(section("Phone Numbers", grid, esc("Give these to patients, pharmacies, insurance companies, and other outside callers to reach us."))); total += mains.length;
   }
 
   const depts = DEPTS.filter(d => matches([d.name, "ext " + d.ext, "x" + d.ext], words));
@@ -348,7 +366,7 @@ function renderList() {
         <span class="ext">Ext ${hl(d.ext, words)}</span>`;
       grid.append(c);
     });
-    list.append(section("Department Extensions", grid, "Use these extensions to transfer calls to the right department or office.")); total += depts.length;
+    list.append(section("Department Extensions", grid, esc("Use these extensions to transfer calls to the right department or office.") + ` Looking for a specific person? Find their extension in the <a href="${STAFF_DIR_URL}" target="_blank" rel="noopener">Staff Directory</a>.`)); total += depts.length;
   }
 
   const locs = LOCS.filter(l => matches([l.name, l.street, l.city], words));
@@ -374,14 +392,6 @@ function renderList() {
     list.innerHTML = `<div class="empty"><strong>Nothing matches${state.query ? ` “${esc(state.query)}”` : ""}.</strong>Try a town name, department, or the last 4 digits of a number.</div>`;
   }
 }
-
-let t;
-$("#q").addEventListener("input", e => {
-  clearTimeout(t);
-  $("#clear").classList.toggle("show", !!e.target.value);
-  t = setTimeout(() => { state.query = e.target.value.trim(); renderList(); }, 120);
-});
-$("#clear").addEventListener("click", () => { $("#q").value = ""; state.query = ""; $("#clear").classList.remove("show"); $("#q").focus(); renderList(); });
 
 $("#list").innerHTML = '<div class="empty">Loading directory…</div>';
 Promise.all([loadTab(TABS.main), loadTab(TABS.locs), loadTab(TABS.depts)])
